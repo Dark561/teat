@@ -447,21 +447,25 @@ Draggable.Parent = Gradient
 task.spawn(function()
 	local script = ToggleScript
 
-	local Toggled = script.Parent.Toggled
-	
 	script.Parent.MouseButton1Down:Connect(function()
-		Toggled.Value = not Toggled.Value
+		local Toggled = script.Parent.Toggled
 		
 		if Toggled.Value == true then
-			Toggled.Parent.crossA.Visible = false
-			Toggled.Parent.tickA.Visible = true
-			
-			Toggled.Parent.FunctionScript.Enabled = true
+			Toggled.Value = false
 		else
-			Toggled.Parent.tickA.Visible = false
-			Toggled.Parent.crossA.Visible = true
+			Toggled.Value = true
+		end
+		
+		if Toggled.Value == true then
+			script.Parent.crossA.Visible = false
+			script.Parent.tickA.Visible = true
 			
-			Toggled.Parent.FunctionScript.Enabled = false
+			script.Parent.FunctionScript.Enabled = true
+		else
+			script.Parent.tickA.Visible = false
+			script.Parent.crossA.Visible = true
+			
+			script.Parent.FunctionScript.Enabled = false
 		end
 	end)
 end)
